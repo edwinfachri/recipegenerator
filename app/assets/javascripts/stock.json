@@ -1,0 +1,20 @@
+{
+  "title" : "Smart Fridge",
+  "stock" : {
+    "1" : {
+      "name" : "sugar",
+      "quantity" : 100,
+      "unit" : "gram"
+    },
+    "2" : {
+      "name" : "milk",
+      "quantity" : 3,
+      "unit" : "box"
+    },
+    "3" : {
+      "name" : "flour",
+      "quantity" : 150,
+      "unit" : "gram"
+    }
+  }
+}

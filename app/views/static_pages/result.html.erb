@@ -1,0 +1,66 @@
+<div id="result" class="nav">
+<!-- <p>
+  <%= @hasil %>
+</p>
+<p>
+  <%= @format %>
+</p>
+<p>
+  <%= @index %>
+</p> -->
+<h1>
+  Ingredients
+</h1>
+  <ul>
+    <% @index.each do |y| %>
+      <% @status = 0 %>
+        <% @hasilJson.each do |x| %>
+          <% if y.split(" ").include?(x[1]["name"]) %>
+            <% @brg = y.split(" ")[0] %>
+            <% @stk = x[1]["quantity"] %>
+            <% y.split(" ").each do |z| %>
+              <% if @arrUnit.include?(z) %>
+                <% if z.singularize === x[1]["unit"].singularize %>
+
+                    <% if @brg.to_f > @stk.to_f %>
+                      <% @status = 1 %>
+                    <% else %>
+                      <% @status = 0 %>
+                    <% end %>
+
+                <% else %>
+
+                  <% if z.singularize === "cup" && x[1]["unit"].singularize ==="gram" %>
+                    <% @conv = @brg.to_f * 340 %>
+                  <% elsif z.singularize === "tablespoon" && x[1]["unit"].singularize ==="gram" %>
+                    <% @conv = @brg.to_f * 21.5 %>
+                  <% end %>
+
+                  <% if @conv.to_f > @stk.to_f %>
+                    <% @status = 1 %>
+                  <% else %>
+                    <% @status = 0 %>
+                  <% end %>
+
+
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <% if @status == 1 %>
+          <li class="oos"><%= y %></li>
+        <% else %>
+          <li><%= y %></li>
+        <% end %>
+    <% end %>
+  </ul>
+  <div id="button">
+    <a href="/static_pages/home">
+      <h2><span class="label label-success">Back</span><h2>
+    </a>
+    <a href="<%= @link %>">
+      <h2><span class="label label-success">Go To Page</span><h2>
+    </a>
+  </div>
+</div>

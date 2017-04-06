@@ -1,0 +1,14 @@
+<div id="box">
+  <div id="logo">
+    <h1>
+      Recipe Generator
+    </h1>
+  </div>
+
+  <div id="search">
+    <%= form_tag static_pages_result_path, :method => 'get', class: "form-group form-inline" do %>
+      <%= text_field_tag(:generate, params[:generate], class: "form-control", :required => true) %>
+      <%= submit_tag "Generate", :name => nil, class: "btn btn-success", id:"button" %>
+    <% end %>
+  </div>
+</div>
